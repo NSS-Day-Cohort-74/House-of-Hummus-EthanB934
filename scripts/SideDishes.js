@@ -1,7 +1,9 @@
+import { setSidesId } from "./transientState.js"
+
 export const Sides = async () => {
         const response = await  fetch("http://localhost:8088/sides")
         const sides = await response.json()
-    
+        document.addEventListener("change", handleSideOptions)
         const sidesListHTML = sides.map(
             (side) => {
                 let html = `<div class="sideEntries">`
@@ -18,4 +20,9 @@ export const Sides = async () => {
     
 } 
 
-
+const handleSideOptions = (changeEvent) => {
+    if(changeEvent.target.name === "sides") {
+        const valueAsInt = parseInt(changeEvent.target.value)
+        setSidesId(valueAsInt)
+    }
+}
