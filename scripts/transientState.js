@@ -35,4 +35,7 @@ export const createNewOrder = async () => {
         body: JSON.stringify(defaultOrder)
     }
     const response = await fetch("http://localhost:8088/purchases", mealRequest)
+    
+    const customEvent = new CustomEvent("newOrder")
+    document.dispatchEvent(customEvent)
 }
