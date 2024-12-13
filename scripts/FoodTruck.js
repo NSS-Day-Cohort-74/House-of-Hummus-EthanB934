@@ -3,10 +3,12 @@
     the sales module is imported here. The sales module is generating HTML for the purchases. This is where all other functions
     that generate HTML will be imported and invoked. 
 */
-import { Sales } from "./Sales.js"
+import { entreesList } from "./Entrees.js"
+//import { Sales } from "./Sales.js"
 
-export const FoodTruck = () => {
-    const salesHTML = Sales()
+export const FoodTruck = async () => {
+    const entreesListHTML = await entreesList()
+    //const salesHTML = Sales()
 
     return `
         <header class="header">
@@ -15,12 +17,19 @@ export const FoodTruck = () => {
         </header>
 
         <article>
+            <section>
+                <h2> Entrées </h2>
+                ${entreesListHTML}
+            </section>
+        </article>
+
+        <article>
             <button id="purchase">Purchase Combo</button>
         </article>
 
         <article class="customerOrders">
             <h2>Monthly Sales</h2>
-            ${salesHTML}
+            
         </article>
 
     `
