@@ -4,12 +4,14 @@
     that generate HTML will be imported and invoked. 
 */
 import { entreesList } from "./Entrees.js"
+import { Sides } from "./SideDishes.js"
 import { Veggies } from "./Vegetables.js"
 //import { Sales } from "./Sales.js"
 
 export const FoodTruck = async () => {
     const entreesListHTML = await entreesList()
     const vegetablesListHTML = await Veggies()
+    const sidesListHTML = await Sides()
     //const salesHTML = Sales()
 
     return `
@@ -26,6 +28,10 @@ export const FoodTruck = async () => {
              <section>
                 <h2> Vegetables </h2>
                 ${vegetablesListHTML}
+            </section>
+              <section>
+                <h2> Sides </h2>
+                ${sidesListHTML}
             </section>
         </article>
 
