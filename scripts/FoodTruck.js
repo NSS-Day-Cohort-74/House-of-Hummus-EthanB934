@@ -5,6 +5,7 @@
 */
 import { entreesList } from "./Entrees.js"
 import { Sides } from "./SideDishes.js"
+import { createNewOrder } from "./transientState.js"
 import { Veggies } from "./Vegetables.js"
 //import { Sales } from "./Sales.js"
 
@@ -13,6 +14,7 @@ export const FoodTruck = async () => {
     const vegetablesListHTML = await Veggies()
     const sidesListHTML = await Sides()
     //const salesHTML = Sales()
+ 
 
     return `
         <header class="header">
@@ -46,3 +48,10 @@ export const FoodTruck = async () => {
 
     `
 }
+
+const handleNewFoodRequest = (clickEvent) => {
+    if(clickEvent.target.id === "purchase") {
+        createNewOrder()
+    }
+}
+document.addEventListener("click", handleNewFoodRequest)

@@ -13,18 +13,26 @@ const defaultOrder =
 
 export const setEntreesId = (valueAsInt) => {
     defaultOrder.entreesId = valueAsInt
-    console.log(defaultOrder.entreesId)
 }
 
 export const setVegetablesId = (valueAsInt) => {
     defaultOrder.vegetablesId = valueAsInt
-    console.log(defaultOrder.vegetablesId)
 
 }
 
 export const setSidesId = (valueAsInt) => {
     defaultOrder.sidesId = valueAsInt
-    console.log(defaultOrder.sidesId)
 
 }
 
+export const createNewOrder = async () => {
+    const mealRequest = {
+        method: "POST",
+        headers:
+        {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(defaultOrder)
+    }
+    const response = await fetch("http://localhost:8088/purchases", mealRequest)
+}
